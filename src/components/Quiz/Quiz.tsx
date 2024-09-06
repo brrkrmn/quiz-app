@@ -52,7 +52,7 @@ const Quiz = () => {
             isDisabled={isDisabled}
             id={option}
             onPress={handleClick}
-            className="flex items-center justify-start gap-4 py-2 flex-1"
+            className={`${isDisabled && 'pointer-events-auto cursor-not-allowed'} flex items-center justify-start gap-4 py-2 flex-1`}
           >
             <span>
               {option}

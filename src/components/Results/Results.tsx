@@ -24,7 +24,7 @@ const Results = () => {
         <TableBody items={questions}>
           {(item) => (
             <TableRow key={item.id}>
-              {(columnKey) => <TableCell>{getKeyValue(item, columnKey) ?? 'Empty'}</TableCell>}
+              {(columnKey) => <TableCell>{getKeyValue(item, columnKey) ?? 'Skipped'}</TableCell>}
             </TableRow>
           )}
         </TableBody>
