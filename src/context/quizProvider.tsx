@@ -3,7 +3,7 @@
 import questionService from "@/services/question/question";
 import { Item } from "@/services/question/question.types";
 import { createContext, useContext, useState } from "react";
-import { Question, QuizContextValue } from "./quizContext.types";
+import { Question, QuizContextValue, Status, Step } from "./quizContext.types";
 
 export const QuizContext = createContext<QuizContextValue>(null);
 
@@ -17,6 +17,8 @@ export const useQuizContext = () => {
 
 const QuizProvider = ({ children }: { children: React.ReactNode }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [step, setStep] = useState<Step>(0);
+  const [status, setStatus] = useState<Status>("notStarted");
 
   const initializeQuestions = async () => {
     const questionItems: Question[] = [];
@@ -41,11 +43,26 @@ const QuizProvider = ({ children }: { children: React.ReactNode }) => {
     setQuestions(questionItems);
   }
 
+  const finishQuiz = () => {
+    setStatus("finished")
+    // setStep(0)
+  }
+
+  const startQuiz = () => {
+    initializeQuestions()
+    setStatus("ongoing")
+    setStep(1)
+  }
+
   return (
     <QuizContext.Provider
       value={{
+        step,
+        status,
         initializeQuestions,
         questions,
+        finishQuiz,
+        startQuiz,
       }}
     >
       {children}

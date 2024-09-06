@@ -9,6 +9,10 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'laptop': '1024px',
+      'tablet': '640px'
+    },
     extend: {
       colors: {
         background: "var(--background)",
