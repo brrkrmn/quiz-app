@@ -66,18 +66,32 @@ const Quiz = () => {
       <CardFooter className="flex items-end justify-center tablet:justify-end">
         <Button color="warning" variant="flat" onPress={() => handleSaveAndNext()}>Next Question</Button>
       </CardFooter>
+
+      <div className='absolute left-0 bottom-0 flex items-end w-full'>
       <Progress
-        value={seconds}
-        maxValue={30}
+        value={Math.min(seconds,20)}
+        maxValue={20}
         label={`${seconds}s`}
         color="warning"
         radius="none"
         size="sm"
-        className="absolute left-0 bottom-0"
+        className="basis-[0] flex-grow-[2]"
         classNames={{
           label: "ml-2 tracking-wider font-medium text-default-600",
         }}
       />
+      <Progress
+        value={seconds - 20}
+        maxValue={10}
+        color="default"
+        radius="none"
+        size="sm"
+        className='basis-0 flex-grow-[1]'
+        classNames={{
+          label: "ml-2 tracking-wider font-medium text-default-600",
+        }}
+        />
+        </div>
     </Card>
   )
 }
