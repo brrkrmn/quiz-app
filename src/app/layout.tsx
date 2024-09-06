@@ -1,3 +1,4 @@
+import QuizProvider from '@/context/quizProvider';
 import { NextUIProvider } from '@nextui-org/react';
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -29,9 +30,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <NextUIProvider>
-        {children}
-      </NextUIProvider>
+        <QuizProvider>
+          <NextUIProvider>
+            {children}
+          </NextUIProvider>
+        </QuizProvider>
       </body>
     </html>
   );
