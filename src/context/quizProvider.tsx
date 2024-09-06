@@ -2,8 +2,8 @@
 
 import questionService from "@/services/question/question";
 import { Item } from "@/services/question/question.types";
-import { createContext, useContext, useState } from "react";
-import { Question, QuizContextValue, Status, Step } from "./quizContext.types";
+import { createContext, useContext, useMemo, useState } from "react";
+import { Options, Question, QuizContextValue, Status, Step } from "./quizContext.types";
 
 export const QuizContext = createContext<QuizContextValue>(null);
 
@@ -45,7 +45,6 @@ const QuizProvider = ({ children }: { children: React.ReactNode }) => {
 
   const finishQuiz = () => {
     setStatus("finished")
-    // setStep(0)
   }
 
   const startQuiz = () => {
@@ -54,13 +53,43 @@ const QuizProvider = ({ children }: { children: React.ReactNode }) => {
     setStep(1)
   }
 
+  const currentQuestion = useMemo(() => {
+    const question = questions.find(q => q.id === step)
+    if (question) {
+      return question
+    }
+    return null
+  }, [step])
+
+  const handleSaveAndNext = (answer?: Options) => {
+    if (answer) {
+      const currentQuestion = questions.find(q => q.id === step)
+      setQuestions(prevQuestions =>
+        prevQuestions.map(question =>
+          question.id === currentQuestion?.id
+            ? { ...question, selected: answer }
+            : question
+        )
+      )
+    }
+
+    const nextStep = step + 1
+    if (nextStep === 11) {
+      setStatus("finished")
+    } else {
+      setStep(nextStep)
+    }
+  }
+
   return (
     <QuizContext.Provider
       value={{
         step,
         status,
         initializeQuestions,
+        currentQuestion,
         questions,
+        handleSaveAndNext,
         finishQuiz,
         startQuiz,
       }}
