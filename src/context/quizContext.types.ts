@@ -7,7 +7,7 @@ export type QuizContextValue = null | {
   startQuiz: () => void;
   initializeQuestions: () => void;
   setStatus: (value: Status) => void;
-  handleSaveAndNext: (answer?: Options) => void;
+  handleSaveAndNext: (answer?: Option) => void;
 };
 
 export type Question = {
@@ -19,11 +19,11 @@ export type Question = {
 };
 
 export type QuestionOption = {
-  [key in Options]: string;
-}
+  [key in Option]: string;
+};
 
-export type Options = 'A' | 'B' | 'C' | 'D'
-export type SelectedOption = Options | null
+export type Option = "A" | "B" | "C" | "D";
+export type SelectedOption = Option | null;
 
 export type Status = "notStarted" | "ongoing" | "finished"
 export type Step = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;

@@ -1,1 +1,3 @@
-export const options = ["A", "B", "C", "D"];
+import { Option } from "@/context/quizContext.types";
+
+export const options: Option[] = ["A", "B", "C", "D"];

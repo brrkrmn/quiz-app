@@ -1,10 +1,10 @@
 'use client'
 
 import { questionService } from "@/services/question";
-import { getQuestionsFromData } from "@/utils/getRandomItems";
+import { getNFromArray } from "@/utils/getNFromArray";
 import { createContext, useContext, useMemo, useState } from "react";
 import {
-  Options,
+  Option,
   Question,
   QuizContextValue,
   Status,
@@ -23,15 +23,31 @@ export const useQuizContext = () => {
 
 const QuizProvider = ({ children }: { children: React.ReactNode }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [step, setStep] = useState<Step>(0);
+  const [step, setStep] = useState<Step>(1);
   const [status, setStatus] = useState<Status>("notStarted");
   const [isLoading, setIsLoading] = useState(false);
 
   const initializeQuestions = async () => {
     setIsLoading(true);
     const items = await questionService.getQuestions();
-    const randomizedQuestions = getQuestionsFromData(items, 10);
-    setQuestions(randomizedQuestions);
+    const randomizedItems = getNFromArray(items, 10);
+
+    const questions: Question[] = randomizedItems.map((item, index) => {
+      const options = item.body.split("\n");
+      return {
+        number: (index + 1) as Step,
+        id: item.id,
+        title: item.title,
+        options: {
+          A: options[0],
+          B: options[1],
+          C: options[2],
+          D: options[3],
+        },
+        selected: null,
+      };
+    });
+    setQuestions(questions);
     setIsLoading(false);
   };
 
@@ -46,7 +62,7 @@ const QuizProvider = ({ children }: { children: React.ReactNode }) => {
     return question ?? null;
   }, [step]);
 
-  const handleSaveAndNext = (answer?: Options) => {
+  const handleSaveAndNext = (answer?: Option) => {
     if (answer) {
       setQuestions((prevQuestions) =>
         prevQuestions.map((question) =>
@@ -61,7 +77,7 @@ const QuizProvider = ({ children }: { children: React.ReactNode }) => {
     if (nextStep === 11) {
       setStatus("finished");
     } else {
-      setStep(nextStep);
+      setStep(nextStep as Step);
     }
   };
 

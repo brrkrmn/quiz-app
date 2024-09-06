@@ -1,5 +1,6 @@
 import { useQuizContext } from "@/context/quizProvider";
 import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Progress } from "@nextui-org/react";
+import cn from "classnames";
 import { useEffect, useState } from "react";
 import { options } from "./Quiz.constants";
 
@@ -31,7 +32,7 @@ const Quiz = () => {
     };
   }, [step]);
 
-  const handleClick = (e) => {
+  const handleClick = (e: any) => {
     handleSaveAndNext(e.target.id);
   };
 
@@ -54,9 +55,9 @@ const Quiz = () => {
             isDisabled={isDisabled}
             id={option}
             onPress={handleClick}
-            className={`${
-              isDisabled && "pointer-events-auto cursor-not-allowed"
-            } flex items-center justify-start gap-4 py-2 flex-1`}
+            className={cn("flex items-center justify-start gap-4 py-2 flex-1", {
+              "pointer-events-auto cursor-not-allowed": isDisabled,
+            })}
           >
             <span>{option}</span>
             <span className="text-wrap text-start">
