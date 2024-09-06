@@ -1,11 +1,11 @@
-import { baseURL, service } from "../../api/api";
+import { service } from "@/api";
 import { GetQuestionsResponse } from "./question.types";
 
 const questionService = {
   getQuestions: async () => {
-    const res = await service.get<GetQuestionsResponse>(baseURL)
-    return res.data
-  }
-}
+    const res = await service.get<GetQuestionsResponse>("/");
+    return res.data;
+  },
+};
 
-export default questionService;
+export { questionService };

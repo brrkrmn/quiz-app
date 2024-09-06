@@ -12,26 +12,38 @@ const Results = () => {
         classNames={{
           th: "text-center text-lg",
           td: "text-center text-lg",
-          wrapper: "border-[1px] border-divider"
+          wrapper: "border-[1px] border-divider",
         }}
         aria-label="Results Table"
         className="*:text-center"
       >
         <TableHeader>
-          <TableColumn key="id">Question</TableColumn>
+          <TableColumn key="number">Question</TableColumn>
           <TableColumn key="selected">Answer</TableColumn>
         </TableHeader>
         <TableBody items={questions}>
           {(item) => (
             <TableRow key={item.id}>
-              {(columnKey) => <TableCell>{getKeyValue(item, columnKey) ?? 'Skipped'}</TableCell>}
+              {(columnKey) => (
+                <TableCell>
+                  {getKeyValue(item, columnKey) ?? "Skipped"}
+                </TableCell>
+              )}
             </TableRow>
           )}
         </TableBody>
       </Table>
-      <Button onPress={() => setStatus("notStarted")} color="warning" variant="flat" size="lg" fullWidth>Home</Button>
+      <Button
+        onPress={() => setStatus("notStarted")}
+        color="warning"
+        variant="flat"
+        size="lg"
+        fullWidth
+      >
+        Home
+      </Button>
     </div>
-  )
+  );
 }
 
 export default Results
