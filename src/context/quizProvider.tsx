@@ -86,11 +86,11 @@ const QuizProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         step,
         status,
+        setStatus,
         initializeQuestions,
         currentQuestion,
         questions,
         handleSaveAndNext,
-        finishQuiz,
         startQuiz,
       }}
     >

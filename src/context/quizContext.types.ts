@@ -1,12 +1,12 @@
 export type QuizContextValue = null | {
-  initializeQuestions: () => void;
-  handleSaveAndNext: (answer?: Options) => void;
-  currentQuestion: Question | null;
-  questions: Question[];
   step: Step;
   status: Status;
-  finishQuiz: () => void;
+  questions: Question[];
+  currentQuestion: Question | null;
   startQuiz: () => void;
+  initializeQuestions: () => void;
+  setStatus: (value: Status) => void;
+  handleSaveAndNext: (answer?: Options) => void;
 }
 
 export type Question = {
