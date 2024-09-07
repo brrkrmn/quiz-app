@@ -5,7 +5,7 @@ import { Results } from "@/components/Results";
 import { StartingMenu } from "@/components/StartingMenu";
 import { useQuizContext } from "@/context/quizProvider";
 
-export const Home = () => {
+const Home = () => {
   const { status } = useQuizContext();
 
   return (

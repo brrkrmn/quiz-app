@@ -32,6 +32,7 @@ const Quiz = () => {
     };
   }, [step]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClick = (e: any) => {
     handleSaveAndNext(e.target.id);
   };
