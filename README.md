@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">
+  Quiz App
+  <br>
+</h1>
 
-## Getting Started
+Quiz App presents users with 10 randomly selected questions per attempt. Each question comes with a 30-second time limit, after which it is automatically skipped if unanswered. For the first 10 seconds, the answer options are disabled. Users cannot revisit previous questions once they've moved on. At the end of the quiz, results are displayed in a table format, providing a summary of performance.
 
-First, run the development server:
+  <a >
+    <img src="https://vercelbadge.vercel.app/api/brrkrmn/quiz-app?style=plastic" />
+  </a>
 
+<br>
+
+## Development Setup
+
+To clone and run this project, you'll need Git and Node.js (which comes with npm) installed on your computer.
+
+<br>
+
+### Setting up Frontend
+
+1. **Clone frontend repo**
+```bash
+git clone https://github.com/brrkrmn/quiz-app.git
+```
+2. **Go into the repo**
+```bash
+cd quiz-app
+```
+3. **Install dependencies**
+```bash
+npm install
+```
+4. **Run the app**
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
