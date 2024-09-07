@@ -23,7 +23,7 @@ export const useQuizContext = () => {
 
 const QuizProvider = ({ children }: { children: React.ReactNode }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [step, setStep] = useState<Step>(1);
+  const [step, setStep] = useState<Step>(10);
   const [status, setStatus] = useState<Status>("notStarted");
   const [isLoading, setIsLoading] = useState(false);
 

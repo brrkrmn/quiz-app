@@ -50,8 +50,9 @@ const Quiz = () => {
       </CardHeader>
       <Divider className="my-4" />
       <CardBody className="flex flex-col items-start justify-center gap-4">
-        {options.map((option) => (
+        {options.map((option, index) => (
           <Button
+            key={index}
             isDisabled={isDisabled}
             id={option}
             onPress={handleClick}
@@ -77,6 +78,7 @@ const Quiz = () => {
       </CardFooter>
       <div className="absolute left-0 bottom-0 flex items-end w-full">
         <Progress
+          aria-label="Question time countdown"
           value={Math.min(seconds, 20)}
           maxValue={20}
           label={`${seconds}s`}
@@ -89,6 +91,7 @@ const Quiz = () => {
           }}
         />
         <Progress
+          aria-label="Button enable countdown"
           value={seconds - 20}
           maxValue={10}
           color="default"
