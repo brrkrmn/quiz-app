@@ -13,7 +13,7 @@ Quiz App presents users with 10 randomly selected questions per attempt. Each qu
 
 ## Development Setup
 
-To clone and run this project, you'll need Git and Node.js (which comes with npm) installed on your computer.
+To clone and run this project, you'll need Git and Node.js (>= v18.17.0) installed on your computer.
 
 <br>
 
